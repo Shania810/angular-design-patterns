@@ -1,0 +1,87 @@
+<div class="flex h-screen items-center justify-center bg-gray-200">
+  <form
+    [formGroup]="entryForm"
+    class="mx-auto max-w-sm rounded bg-gray-200 p-4"
+  >
+    <div class="mb-4">
+      <label for="date" class="mb-2 block font-bold text-gray-700">Date:</label>
+      <input
+        formControlName="date"
+        placeholder="dd/mm/aa"
+        type="date"
+        id="date"
+        name="date"
+        class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="exercise" class="mb-2 block font-bold text-gray-700"
+        >Exercise:</label
+      >
+      <input
+        formControlName="exercise"
+        title="0"
+        placeholder="0"
+        type="text"
+        id="exercise"
+        name="exercise"
+        class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow"
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="mb-2 block font-bold px-3 py-2 leading-tight text-gray-700 shadow"
+        for="sets"
+        >Sets:</label
+      >
+      <input
+        formControlName="sets"
+        placeholder="0"
+        type="number"
+        id="sets"
+        name="sets"
+        class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow"
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="mb-2 block font-bold px-3 py-2 leading-tight text-gray-700 shadow"
+        for="reps"
+        >Reps:</label
+      >
+      <input
+        formControlName="reps"
+        placeholder="0"
+        type="number"
+        id="reps"
+        name="reps"
+        class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow"
+      />
+    </div>
+    <div>
+      <div *ngIf="entryForm.get('date')?.invalid && entryForm.get('date')?.touched" class="mt-1 text-red-500">
+        Date is required
+      </div>
+      <div *ngIf="entryForm.get('exercise')?.invalid && entryForm.get('exercise')?.touched" class="mt-1 text-red-500">
+        Exercise is required
+      </div>
+      <div *ngIf="entryForm.get('sets')?.errors?.['isNotMultiple'] && entryForm.get('sets')?.touched" class="mt-1 text-red-500">
+        Sets is required and must be multiple of 2
+      </div>
+      <div *ngIf="entryForm.get('reps')?.errors?.['isNotMultiple'] && entryForm.get('reps')?.touched" class="mt-1 text-red-500">
+        Reps is required and must be multiple of 3
+      </div>
+    </div>
+    <div class="flex items-center justify-center">
+      <button
+        type="submit"
+        class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+        [disabled]="entryForm.invalid"
+        [class.opacity-50]="entryForm.invalid"
+      >
+        Confirm
+      </button>
+    </div>
+  </form>
+</div>
+{{ entryForm.value | json }}

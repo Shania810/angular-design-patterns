@@ -1,0 +1,74 @@
+<div class="flex h-screen items-center justify-center bg-gray-200">
+  <form
+    (ngSubmit)="newEntry()"
+    class="mx-auto max-w-sm rounded bg-gray-200 p-4"
+  >
+    <div class="mb-4">
+      <label for="date" class="mb-2 block font-bold text-gray-700">Date:</label>
+      <input
+        [(ngModel)]="entry.date"
+        title="dd/mm/aa"
+        placeholder="dd/mm/aa"
+        type="date"
+        id="date"
+        name="date"
+        class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow"
+      />
+    </div>
+    <div class="mb-4">
+      <label for="exercise" class="mb-2 block font-bold text-gray-700"
+        >Exercise:</label
+      >
+      <input
+        [(ngModel)]="entry.exercise"
+        title="0"
+        placeholder="0"
+        type="text"
+        id="exercise"
+        name="exercise"
+        class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow"
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="mb-2 block font-bold px-3 py-2 leading-tight text-gray-700 shadow"
+        for="sets"
+        >Sets:</label
+      >
+      <input
+        [(ngModel)]="entry.sets"
+        title="0"
+        placeholder="0"
+        type="number"
+        id="sets"
+        name="sets"
+        class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow"
+      />
+    </div>
+    <div class="mb-4">
+      <label
+        class="mb-2 block font-bold px-3 py-2 leading-tight text-gray-700 shadow"
+        for="reps"
+        >Reps:</label
+      >
+      <input
+        [(ngModel)]="entry.reps"
+        title="0"
+        placeholder="0"
+        type="number"
+        id="reps"
+        name="reps"
+        class="w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow"
+      />
+    </div>
+    <div class="flex items-center justify-center">
+      <button
+        type="submit"
+        class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+      >
+        Add Entry
+      </button>
+    </div>
+  </form>
+</div>
+{{ entry | json }}
